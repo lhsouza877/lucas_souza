@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e1e1e1">
+  <title>Calibração de balanças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Calibração, início">
+      <img class="brand-logo" src="logo_1.png" alt="Mizu Cimentos">
+      <span class="brand-copy"><small>CONTROLE DE CALIBRAÇÃO</small></span>
+    </a>
+    <div class="topbar-state"><span class="live-dot"></span><span id="storage-status" role="status">Armazenamento local</span></div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">METROLOGIA <span>/</span> REGISTRO 01</p>
+        <h1>Calibração de balanças</h1>
+        <p class="heading-copy">Registre os pontos de carga e acompanhe o desvio de cada medição.</p>
+      </div>
+      <div class="heading-actions">
+        <a class="button button-secondary" href="Planilha%20de%20Calibra%C3%A7%C3%A3o%20Bal.xlsx" download="Planilha de Calibração Bal.xlsx">Baixar planilha</a>
+        <button class="button button-secondary" id="export-button" type="button">Exportar CSV</button>
+        <button class="button button-primary" id="new-record-button" type="button">Novo registro</button>
+      </div>
+    </section>
+
+    <section class="summary-strip" aria-label="Resumo do registro">
+      <div class="summary-item"><span class="summary-label">PONTOS PREENCHIDOS</span><strong id="summary-points">0</strong></div>
+      <div class="summary-item"><span class="summary-label">DESVIO MÉDIO ABSOLUTO</span><strong><span id="summary-average">—</span><small>%</small></strong></div>
+      <div class="summary-item"><span class="summary-label">REGISTROS NO HISTÓRICO</span><strong id="summary-records">0</strong></div>
+      <div class="summary-note">O peso ideal é calculado por <b>tara + pedido</b>. O erro usa o pedido como referência.</div>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow">FOLHA DE MEDIÇÃO</p><h2 id="form-title">Novo registro</h2></div>
+          <span class="record-index" id="record-index">01</span>
+        </div>
+
+        <form id="calibration-form">
+          <div class="metadata-grid">
+            <label class="field"><span>Data da calibração</span><input id="calibration-date" name="date" type="date" required></label>
+            <label class="field"><span>Material</span>
+              <select id="material" name="material" required>
+                <option value="Clínquer">Clínquer</option>
+                <option value="Gesso">Gesso</option>
+                <option value="Pozolano">Pozolano</option>
+                <option value="Escória">Escória</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </label>
+            <label class="field"><span>Identificação da balança</span><input id="scale-id" name="scale" type="text" placeholder="Ex.: Z1A01" maxlength="40" required></label>
+            <label class="field"><span>Unidade dos pesos</span>
+              <select id="weight-unit" name="unit" required>
+                <option value="kg">kg</option>
+                <option value="g">g</option>
+                <option value="t">t</option>
+              </select>
+            </label>
+            <label class="field field-wide"><span>Responsável</span><input id="operator" name="operator" type="text" placeholder="Nome do responsável" maxlength="80"></label>
+          </div>
+
+          <div class="measurements-heading">
+            <div><p class="eyebrow">PONTOS DE CARGA</p><h3>Medições</h3></div>
+            <button class="text-button" id="add-point-button" type="button">+ Adicionar ponto</button>
+          </div>
+
+          <div class="measurement-table" aria-label="Pontos de medição">
+            <div class="table-head" aria-hidden="true">
+              <span>PONTO</span><span>TARA</span><span>PEDIDO</span><span>PESO REAL</span><span>PESO IDEAL</span><span>ERRO %</span><span></span>
+            </div>
+            <div id="measurement-rows"></div>
+          </div>
+          <p class="table-hint">Preencha tara, pedido e peso indicado pela balança. Peso ideal e erro são calculados automaticamente.</p>
+
+          <label class="field notes-field"><span>Observações</span><textarea id="notes" name="notes" rows="2" maxlength="500" placeholder="Observações sobre a calibração (opcional)"></textarea></label>
+          <div class="form-footer">
+            <span id="form-message" class="form-message" role="status"></span>
+            <button class="button button-primary save-button" id="save-button" type="submit">Salvar calibração</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="panel history-panel" aria-labelledby="history-title">
+        <div class="history-heading"><div><p class="eyebrow">ARQUIVO LOCAL</p><h2 id="history-title">Histórico</h2></div><span id="history-count" class="history-count">0</span></div>
+        <label class="search-field"><span class="sr-only">Buscar no histórico</span><input id="history-search" type="search" placeholder="Buscar material ou balança"></label>
+        <div id="history-list" class="history-list"></div>
+        <p id="empty-history" class="empty-history">As calibrações salvas neste navegador aparecerão aqui.</p>
+        <div class="storage-note"><strong>Armazenamento neste dispositivo</strong><span>Os dados ficam neste navegador. Exporte o CSV para guardar ou consolidar os registros.</span></div>
+      </aside>
+    </div>
+    <footer class="page-footer"><span>CONTROLE DE PROCESSO</span><span>CALIBRAÇÃO DE BALANÇAS <i></i> POLIMIX</span></footer>
+  </main>
+</body>
+</html>
