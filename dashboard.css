@@ -25,6 +25,41 @@ body {
   font-size: 14px;
 }
 
+body.dark-preview {
+  --canvas: #141b17;
+  --surface: #222d26;
+  --ink: #edf3ee;
+  --muted: #aab7ae;
+  --line: #3a493f;
+  --green: #8bc99e;
+  --green-soft: #293e30;
+  --coral: #ef987f;
+  --coral-soft: #452f2a;
+  --blue: #8ab8dc;
+  --blue-soft: #293d4d;
+  --gold: #e2c071;
+  --gold-soft: #413a27;
+  --shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-preview .sidebar { background: var(--surface); }
+body.dark-preview .nav-label { color: var(--muted); }
+body.dark-preview .nav a { color: #c9d3cc; }
+body.dark-preview .nav a:hover { background: #2c3930; color: var(--ink); }
+body.dark-preview .icon-button { color: #c9d3cc; }
+body.dark-preview .period-select,
+body.dark-preview .secondary-button,
+body.dark-preview .select-small { background: var(--surface); color: var(--ink); }
+body.dark-preview .eyebrow,
+body.dark-preview .about-heading,
+body.dark-preview .church-info-copy a { color: var(--green); }
+body.dark-preview .about-description,
+body.dark-preview .church-info-copy p,
+body.dark-preview .service-table tbody th,
+body.dark-preview .service-table tbody td { color: #dce6de; }
+body.dark-preview .service-table tbody tr:nth-child(even) { background: var(--surface); }
+body.dark-preview .bar.current { background: var(--green); }
+
 button, select, input, textarea { font: inherit; }
 button { cursor: pointer; }
 .app { min-height: 100vh; }
