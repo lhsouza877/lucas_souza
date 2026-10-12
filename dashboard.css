@@ -62,6 +62,7 @@ button { cursor: pointer; }
   border-radius: 7px;
   color: #68736b;
   display: flex;
+  font-size: 15px;
   gap: 12px;
   min-height: 42px;
   padding: 0 11px;
@@ -240,8 +241,8 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .desktop-brand { display: none; }
   .nav-label, .sidebar-bottom { display: none; }
   .nav { display: flex; gap: 4px; margin-top: 9px; overflow-x: auto; padding-bottom: 1px; }
-  .nav a { flex: 0 0 auto; font-size: 11px; min-height: 35px; padding: 0 9px; }
-  .nav a i { font-size: 12px; }
+  .nav a { flex: 0 0 auto; font-size: 14px; min-height: 40px; padding: 0 9px; }
+  .nav a i { font-size: 14px; }
   .nav-count { display: none; }
   .about-layout { grid-template-columns: minmax(0, 1fr); }
   .about-image { max-width: 400px; width: 100%; }
