@@ -139,20 +139,6 @@
     </div>
 
     <script>
-      const period = document.querySelector("#period");
-
-      const periodData = {
-        trimestre: { participants: "2.416", activities: "187", volunteers: "48", caption: "Presença registrada por mês nos últimos 3 meses", bars: [57, 69, 82, 64, 90] }
-      };
-      period.addEventListener("change", () => {
-        const data = periodData[period.value];
-        document.querySelector('[data-metric="participants"]').textContent = data.participants;
-        document.querySelector('[data-metric="activities"]').textContent = data.activities;
-        document.querySelector('[data-metric="volunteers"]').textContent = data.volunteers;
-        document.querySelector("#chart-caption").textContent = data.caption;
-        document.querySelectorAll("#chart-bars .bar").forEach((bar, index) => { bar.style.height = `${data.bars[index]}%`; });
-      });
-
       document.querySelectorAll(".nav a").forEach((link) => {
         link.addEventListener("click", () => {
           document.querySelectorAll(".nav a").forEach((item) => item.classList.remove("active"));
