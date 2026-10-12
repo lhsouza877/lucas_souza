@@ -224,7 +224,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .sidebar { border-bottom: 1px solid var(--line); border-right: 0; height: auto; padding: 10px 15px; position: sticky; top: 0; width: 100%; }
   .brand { padding: 0; }
   .brand-mark { flex-basis: 34px; height: 34px; }
-  .mobile-brand { align-items: center; display: flex; justify-content: space-between; }
+  .mobile-brand { align-items: center; display: flex; justify-content: flex-start; }
   .desktop-brand { display: none; }
   .nav-label, .sidebar-bottom { display: none; }
   .nav { display: flex; gap: 4px; margin-top: 9px; overflow-x: auto; padding-bottom: 1px; }
