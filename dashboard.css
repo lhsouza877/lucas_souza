@@ -1,0 +1,258 @@
+:root {
+  --canvas: #f5f6f2;
+  --surface: #fff;
+  --ink: #202923;
+  --muted: #7d867f;
+  --line: #e8ebe5;
+  --green: #28684e;
+  --green-soft: #e8f2ec;
+  --coral: #d96e55;
+  --coral-soft: #fbede8;
+  --blue: #547c9d;
+  --blue-soft: #eaf0f5;
+  --gold: #bd8b3d;
+  --gold-soft: #f7f0e3;
+  --shadow: 0 10px 28px rgba(31, 48, 37, 0.045);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+}
+
+button, select, input, textarea { font: inherit; }
+button { cursor: pointer; }
+.app { min-height: 100vh; }
+
+.sidebar {
+  background: #fff;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  inset: 0 auto 0 0;
+  padding: 25px 17px 18px;
+  position: fixed;
+  width: 244px;
+  z-index: 3;
+}
+
+.brand { align-items: center; display: flex; gap: 11px; padding: 0 7px 30px; }
+.brand-mark {
+  align-items: center;
+  background: var(--green);
+  border-radius: 11px;
+  color: white;
+  display: flex;
+  flex: 0 0 39px;
+  height: 39px;
+  justify-content: center;
+}
+.brand-mark i { font-size: 17px; }
+.brand-name { font: 800 13px/1.25 "Manrope", sans-serif; }
+.brand-caption { color: var(--muted); font-size: 11px; margin-top: 3px; }
+.nav-label { color: #a0a79f; font-size: 10px; font-weight: 700; padding: 0 11px 10px; text-transform: uppercase; }
+.nav { display: grid; gap: 5px; }
+.nav a {
+  align-items: center;
+  border-radius: 7px;
+  color: #68736b;
+  display: flex;
+  gap: 12px;
+  min-height: 42px;
+  padding: 0 11px;
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease;
+}
+.nav a i { font-size: 15px; text-align: center; width: 17px; }
+.nav a:hover { background: #f4f6f2; color: var(--ink); }
+.nav a.active { background: var(--green-soft); color: var(--green); font-weight: 700; }
+.nav-count { background: var(--coral-soft); border-radius: 20px; color: var(--coral); font-size: 10px; font-weight: 700; margin-left: auto; padding: 3px 7px; }
+.sidebar-qr { margin: 14px auto 0; width: min(100%, 180px); }
+.sidebar-qr img { display: block; height: auto; width: 100%; }
+.sidebar-bottom { border-top: 1px solid var(--line); margin-top: auto; padding-top: 15px; }
+.church-mini { align-items: center; display: flex; gap: 10px; padding: 7px; }
+.church-mini img { border-radius: 50%; height: 34px; object-fit: cover; width: 34px; }
+.church-mini strong { display: block; font-size: 12px; }
+.church-mini span { color: var(--muted); display: block; font-size: 10px; margin-top: 2px; }
+
+.main { margin-left: 244px; min-height: 100vh; padding: 0 36px 38px; }
+.topbar { align-items: center; border-bottom: 1px solid var(--line); display: flex; height: 76px; justify-content: space-between; }
+.crumb { color: var(--muted); font-size: 12px; }
+.crumb strong { color: var(--ink); font-weight: 600; }
+.top-actions { align-items: center; display: flex; gap: 17px; }
+.icon-button { background: transparent; border: 0; color: #69736c; font-size: 16px; height: 36px; position: relative; width: 36px; }
+.icon-button:hover { color: var(--green); }
+.notification-dot { background: var(--coral); border: 2px solid var(--canvas); border-radius: 50%; height: 8px; position: absolute; right: 7px; top: 6px; width: 8px; }
+.top-divider { background: var(--line); height: 28px; width: 1px; }
+.profile { align-items: center; display: flex; gap: 9px; }
+.profile-avatar { align-items: center; background: #e6d5c2; border-radius: 50%; color: #604c39; display: flex; font-size: 11px; font-weight: 700; height: 34px; justify-content: center; width: 34px; }
+.profile-name { font-size: 12px; font-weight: 700; }
+.profile-role { color: var(--muted); font-size: 10px; margin-top: 2px; }
+
+.page-heading { align-items: flex-end; display: flex; justify-content: space-between; padding: 28px 0 20px; }
+.eyebrow { color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+h1, h2, p { margin: 0; }
+h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
+.heading-copy { color: var(--muted); font-size: 12px; margin-top: 6px; }
+.heading-actions { align-items: center; display: flex; gap: 9px; }
+.period-select, .secondary-button {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: #455047;
+  height: 38px;
+  padding: 0 11px;
+}
+.period-select { min-width: 142px; }
+.primary-button { align-items: center; background: var(--green); border: 0; border-radius: 6px; color: white; display: inline-flex; gap: 8px; height: 38px; padding: 0 13px; transition: background 160ms ease; }
+.primary-button:hover { background: #1e553e; }
+
+.welcome {
+  align-items: center;
+  background: #264b3b;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  min-height: 145px;
+  overflow: hidden;
+  padding: 24px 28px;
+  position: relative;
+}
+.welcome::after { background: linear-gradient(90deg, #264b3b 2%, rgba(38, 75, 59, .93) 36%, rgba(38, 75, 59, .15) 100%); content: ""; inset: 0; position: absolute; }
+.welcome img { height: 100%; object-fit: cover; object-position: center 48%; position: absolute; right: 0; top: 0; width: 56%; }
+.welcome-content { max-width: 500px; position: relative; z-index: 1; }
+.welcome-kicker { color: #c5d9cb; font-size: 11px; }
+.welcome h2 { font: 700 23px/1.35 "Manrope", sans-serif; margin-top: 7px; }
+.welcome p { color: #d4e0d7; font-size: 16px; line-height: 1.5; margin-top: 8px; }
+.welcome-date { align-items: center; align-self: flex-end; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.22); border-radius: 5px; color: white; display: flex; font-size: 11px; gap: 8px; padding: 9px 11px; position: relative; z-index: 1; }
+
+.section-heading { align-items: center; display: flex; justify-content: space-between; margin-bottom: 13px; }
+.section-heading h2 { font: 700 14px "Manrope", sans-serif; }
+.section-heading a { color: var(--green); font-size: 11px; font-weight: 700; text-decoration: none; }
+.metrics { display: grid; gap: 13px; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 22px 0; }
+.metric { background: var(--surface); border: 1px solid var(--line); border-radius: 7px; min-height: 118px; padding: 16px; }
+.metric-top { align-items: center; color: var(--muted); display: flex; font-size: 11px; justify-content: space-between; }
+.metric-icon { align-items: center; border-radius: 6px; display: flex; height: 31px; justify-content: center; width: 31px; }
+.metric-icon.green { background: var(--green-soft); color: var(--green); }
+.metric-icon.coral { background: var(--coral-soft); color: var(--coral); }
+.metric-icon.blue { background: var(--blue-soft); color: var(--blue); }
+.metric-icon.gold { background: var(--gold-soft); color: var(--gold); }
+.metric-value { font: 800 23px "Manrope", sans-serif; margin-top: 10px; }
+.metric-value-upcoming { font-size: 20px; }
+.metric-foot { color: var(--muted); font-size: 10px; margin-top: 4px; }
+.positive { color: var(--green); font-weight: 700; }
+
+.content-grid { display: grid; gap: 15px; grid-template-columns: minmax(0, 1fr); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 7px; min-width: 0; }
+#sobre-igreja { min-height: 400px; }
+.panel-head { align-items: center; display: flex; justify-content: space-between; padding: 17px 18px 0; }
+.panel-head h2 { font: 700 13px "Manrope", sans-serif; }
+.panel-subtitle { color: var(--muted); font-size: 10px; margin-top: 4px; }
+.select-small { background: white; border: 1px solid var(--line); border-radius: 5px; color: #657067; font-size: 10px; height: 29px; padding: 0 7px; }
+.about-layout { align-items: center; display: grid; gap: 26px; grid-template-columns: minmax(0, 1.45fr) minmax(240px, .85fr); padding: 24px; }
+.about-copy { min-width: 0; }
+.about-heading { color: var(--green); font: 700 20px/1.3 "Manrope", sans-serif; margin: 0; }
+.about-description { color: #4d5850; font: 400 16px/1.65 "Lora", Georgia, serif; padding-top: 14px; }
+.about-description p + p { margin-top: 12px; }
+.about-image { aspect-ratio: 16 / 9; border-radius: 7px; margin: 0; overflow: hidden; }
+.about-image video { display: block; height: 100%; object-fit: contain; width: 100%; }
+.chart-legend { align-items: center; color: var(--muted); display: flex; font-size: 10px; gap: 7px; padding: 18px 19px 0; }
+.legend-dot { background: var(--green); border-radius: 50%; height: 7px; width: 7px; }
+.chart { display: flex; flex-direction: column; height: 185px; justify-content: space-between; margin: 12px 18px 15px; }
+.chart-area { align-items: end; border-bottom: 1px solid var(--line); display: flex; flex: 1; gap: 13px; justify-content: space-around; padding: 7px 5px 0; position: relative; }
+.chart-area::before, .chart-area::after { border-top: 1px dashed #edf0eb; content: ""; left: 0; position: absolute; right: 0; }
+.chart-area::before { top: 33%; }
+.chart-area::after { top: 66%; }
+.bar-group { align-items: center; display: flex; flex: 1; flex-direction: column; height: 100%; justify-content: end; position: relative; z-index: 1; }
+.bar { background: #bdd4c5; border-radius: 4px 4px 0 0; min-height: 6px; transition: height 250ms ease; width: min(27px, 70%); }
+.bar.current { background: var(--green); }
+.bar-42 { height: 42%; }
+.bar-23 { height: 23%; }
+.bar-31 { height: 31%; }
+.bar-52 { height: 52%; }
+.bar-76 { height: 76%; }
+.bar-label { color: var(--muted); font-size: 9px; padding-top: 8px; }
+.chart-foot { color: var(--muted); display: flex; font-size: 9px; justify-content: space-between; padding-top: 7px; }
+
+.church-info-list { display: grid; gap: 17px; padding: 18px; }
+.church-info-item { align-items: start; border-bottom: 1px solid var(--line); display: grid; gap: 12px; grid-template-columns: 34px minmax(0, 1fr); padding-bottom: 17px; }
+.church-info-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.church-info-icon { align-items: center; background: var(--green-soft); border-radius: 6px; color: var(--green); display: flex; height: 34px; justify-content: center; width: 34px; }
+.church-info-copy h3 { font: 700 12px "Manrope", sans-serif; }
+.church-info-copy p { color: #4d5850; font-size: 11px; line-height: 1.5; margin-top: 5px; }
+.church-info-copy a { align-items: center; color: var(--green); display: inline-flex; font-size: 11px; font-weight: 700; gap: 6px; margin-top: 8px; text-decoration: none; }
+.church-info-copy a:hover { text-decoration: underline; }
+.church-info-panel { margin-top: 20px; }
+.photo-trend { margin-top: 20px; }
+.photo-trend-head { border-bottom: 1px solid var(--line); margin-bottom: 13px; padding-bottom: 12px; }
+.photo-trend-head h2 { font: 700 14px "Manrope", sans-serif; }
+.photo-trend-head p { color: var(--muted); font-size: 11px; margin-top: 4px; }
+.photo-trend-window { border-radius: 7px; overflow: hidden; }
+.photo-trend-window:hover .photo-trend-track, .photo-trend-window:focus .photo-trend-track { animation-play-state: paused; }
+.photo-trend-track { animation: photo-drift 36s linear infinite; display: flex; width: max-content; }
+.photo-trend-set { display: flex; flex: 0 0 auto; gap: 12px; padding-right: 12px; }
+.photo-trend-card { border-radius: 6px; flex: 0 0 min(78vw, 360px); margin: 0; overflow: hidden; }
+.photo-trend-card img { aspect-ratio: 4 / 3; display: block; object-fit: cover; width: 100%; }
+@keyframes photo-drift { to { transform: translateX(-50%); } }
+.toast { background: #20382c; border-radius: 6px; bottom: 20px; color: white; opacity: 0; padding: 11px 15px; pointer-events: none; position: fixed; right: 22px; transform: translateY(8px); transition: 180ms ease; z-index: 5; }
+.toast.visible { opacity: 1; transform: translateY(0); }
+
+.mobile-brand { display: none; }
+
+@media (max-width: 1050px) {
+  .main { padding-left: 25px; padding-right: 25px; }
+  .sidebar { width: 216px; }
+  .main { margin-left: 216px; }
+  .metrics { gap: 9px; }
+  .metric { padding: 13px; }
+}
+@media (max-width: 800px) {
+  .sidebar { border-bottom: 1px solid var(--line); border-right: 0; height: auto; padding: 10px 15px; position: sticky; top: 0; width: 100%; }
+  .brand { padding: 0; }
+  .brand-mark { flex-basis: 34px; height: 34px; }
+  .mobile-brand { align-items: center; display: flex; justify-content: space-between; }
+  .desktop-brand { display: none; }
+  .nav-label, .sidebar-bottom { display: none; }
+  .nav { display: flex; gap: 4px; margin-top: 9px; overflow-x: auto; padding-bottom: 1px; }
+  .nav a { flex: 0 0 auto; font-size: 11px; min-height: 35px; padding: 0 9px; }
+  .nav a i { font-size: 12px; }
+  .nav-count { display: none; }
+  .sidebar-qr { margin-top: 8px; width: 140px; }
+  .about-layout { grid-template-columns: minmax(0, 1fr); }
+  .about-image { max-width: 400px; width: 100%; }
+  .main { margin-left: 0; padding: 0 18px 28px; }
+  .topbar { height: 55px; }
+  .profile-name, .profile-role { display: none; }
+  .top-actions { gap: 8px; }
+}
+@media (max-width: 620px) {
+  .main { padding-left: 14px; padding-right: 14px; }
+  .page-heading { align-items: flex-start; flex-direction: column; gap: 14px; padding: 21px 0 16px; }
+  h1 { font-size: 22px; }
+  .heading-actions { width: 100%; }
+  .period-select { flex: 1; }
+  .welcome { min-height: 164px; padding: 19px; }
+  .welcome img { opacity: .45; width: 76%; }
+  .welcome::after { background: linear-gradient(90deg, #264b3b 0%, rgba(38,75,59,.87) 55%, rgba(38,75,59,.25) 100%); }
+  .welcome-date { align-self: flex-end; font-size: 0; gap: 0; padding: 9px; }
+  .welcome-date i { font-size: 13px; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 15px 0; }
+  .metric { min-height: 110px; }
+  .content-grid { grid-template-columns: minmax(0, 1fr); }
+  .chart { height: 170px; }
+  .top-divider { display: none; }
+  .crumb { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .photo-trend-window { overflow-x: auto; scroll-snap-type: x mandatory; }
+  .photo-trend-track { animation: none; }
+  .photo-trend-set[aria-hidden="true"] { display: none; }
+  .photo-trend-card { scroll-snap-align: start; }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <title>Painel de atividades | AD Arca da Aliança</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar" aria-label="Navegação principal">
+        <div class="mobile-brand">
+          <div class="brand">
+            <div class="brand-mark"><i class="fa-solid fa-church" aria-hidden="true"></i></div>
+            <div><div class="brand-name">ARCA DA ALIANÇA</div><div class="brand-caption">Menu de Operação</div></div>
+          </div>
+          <button class="icon-button" type="button" aria-label="Abrir notificações"><i class="fa-regular fa-bell"></i><span class="notification-dot"></span></button>
+        </div>
+        <div class="brand desktop-brand">
+          <div class="brand-mark"><i class="fa-solid fa-church" aria-hidden="true"></i></div>
+          <div><div class="brand-name">ARCA DA ALIANÇA</div><div class="brand-caption">Menu de Operação</div></div>
+        </div>
+        <div class="nav-label">Menu principal</div>
+        <nav class="nav">
+          <a class="active" href="#inicio"><i class="fa-solid fa-house" aria-hidden="true"></i><span class="nav-link-label">Início</span></a>
+          <a href="#sobre"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span class="nav-link-label">Sobre</span></a>
+          <a href="#atividades"><i class="fa-solid fa-church" aria-hidden="true"></i><span class="nav-link-label">Informações da igreja</span></a>
+          <a href="#colabore"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i><span class="nav-link-label">Colabore conosco</span></a>
+        </nav>
+        <div class="sidebar-qr" id="colabore">
+          <img src="qr_code.jpeg" alt="QR Code Pix para dízimos e ofertas da AD Arca da Aliança" loading="lazy" />
+        </div>
+        <div class="sidebar-bottom">
+          <div class="church-mini">
+            <img src="igreja_1.webp" alt="" />
+            <div><strong>AD Arca da Aliança</strong><span>Ananindeua, PA</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main" id="inicio">
+        <header class="topbar">
+          <div class="crumb">Comunidade <span aria-hidden="true">/</span> <strong>Visão geral</strong></div>
+          <div class="top-actions">
+            <button class="icon-button desktop-notification" type="button" aria-label="Notificações"><i class="fa-regular fa-bell"></i><span class="notification-dot"></span></button>
+          </div>
+        </header>
+
+        <section class="page-heading">
+          <div><div class="eyebrow">Veja quem somos e o que fazemos</div><h1>Visão geral</h1><p class="heading-copy"></p></div>
+         
+        </section>
+
+        <section class="welcome" id="sobre" aria-label="Sobre a comunidade">
+          <img src="igreja_1.webp" alt="Fachada da Assembleia de Deus Arca da Aliança" />
+          <div class="welcome-content">
+            <div class="welcome-kicker"></div>
+            <h2>Arca da Aliança em Movimento</h2>
+            <p>Estamos nas ruas, nos caceres, nos lares, nas comunidades pregando o evangelho.</p>
+            <p>Não ficamos retido há um templo, mas cumprimos o ide do Senhor!</p>
+          </div>
+          <div class="welcome-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i><span></span></div>
+        </section>
+
+    
+        <div class="content-grid">
+          <section class="panel" id="sobre-igreja">
+            <div class="about-layout">
+              <div class="about-copy">
+                <h1 class="about-heading">Sobre a igreja</h1>
+                <div class="about-description">
+                  <p>O ministério AD Arca da Aliança nasceu há 11 anos no bairro do Icui, através da vida do pastor Franklin Silva e de Genilson Rocha.</p>
+                  <p>Após o primeiro ano, decidiram abrir uma filial no bairro do Aurá, junto do pastor Renato Caxias, pastor e dirigente da Assembleia de Deus Arca da Aliança no Aurá.</p>
+                  <p>Os primeiros anos foram difíceis, e a obra começou com uma estrutura simples, como uma tenda.</p>
+                  <p>Com o passar do tempo, vidas e lares foram transformados. A igreja cresceu e segue alcançando pessoas através do Evangelho de Cristo.</p>
+                  <p>Hoje promovemos diversos cultos em nossa comunidade local, evangelismo e cultos em praças, ruas e feiras. Em todos os lugares, pregamos o Evangelho.</p>
+                </div>
+              </div>
+              <figure class="about-image">
+                <video controls playsinline preload="metadata" poster="igreja_1.webp" aria-label="Vídeo convite da Assembleia de Deus Arca da Aliança">
+                  <source src="Convite_Arca.mp4" type="video/mp4" />
+                  Seu navegador não oferece suporte à reprodução de vídeo.
+                </video>
+              </figure>
+            </div>
+          </section>
+
+        </div>
+
+        <section class="photo-trend" aria-label="Fotos das atividades da igreja">
+          <div class="photo-trend-head">
+            <div><h2>Atividades da comunidade</h2><p>Registros de cultos, ações sociais e encontros</p></div>
+          </div>
+          <div class="photo-trend-window" role="region" aria-label="Galeria de fotos em rolagem contínua" tabindex="0">
+            <div class="photo-trend-track">
+              <div class="photo-trend-set">
+                <figure class="photo-trend-card"><img src="imagem_1.jpeg" alt="Entrega de alimentos durante uma ação comunitária" loading="lazy" /></figure>
+                <figure class="photo-trend-card"><img src="imagem_2.jpeg" alt="Membros reunidos durante um culto" loading="lazy" /></figure>
+                <figure class="photo-trend-card"><img src="imagem_3.jpeg" alt="Voluntários preparando bebidas para a comunidade" loading="lazy" /></figure>
+                <figure class="photo-trend-card"><img src="imagem_4.jpeg" alt="Comunidade reunida em oração" loading="lazy" /></figure>
+              </div>
+              <div class="photo-trend-set" aria-hidden="true">
+                <figure class="photo-trend-card"><img src="imagem_1.jpeg" alt="" loading="lazy" /></figure>
+                <figure class="photo-trend-card"><img src="imagem_2.jpeg" alt="" loading="lazy" /></figure>
+                <figure class="photo-trend-card"><img src="imagem_3.jpeg" alt="" loading="lazy" /></figure>
+                <figure class="photo-trend-card"><img src="imagem_4.jpeg" alt="" loading="lazy" /></figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel church-info-panel" id="atividades">
+          <div class="panel-head"><div><h2>Informações da igreja</h2><p class="panel-subtitle">Localização e contato</p></div></div>
+          <div class="church-info-list">
+            <div class="church-info-item">
+              <span class="church-info-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+              <div class="church-info-copy">
+                <h3>Localização</h3>
+                <p>Quadra 0, 28 - Aurá, Ananindeua - PA.</p>
+                <a href="https://maps.app.goo.gl/gEr5ApzBTGcpxext6" target="_blank" rel="noopener noreferrer">Abrir no mapa <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <div class="church-info-item">
+              <span class="church-info-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+              <div class="church-info-copy">
+                <h3>Contato</h3>
+                <p><a href="tel:+5591982487263">91 98313-2245</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <script>
+      const period = document.querySelector("#period");
+
+      const periodData = {
+        trimestre: { participants: "2.416", activities: "187", volunteers: "48", caption: "Presença registrada por mês nos últimos 3 meses", bars: [57, 69, 82, 64, 90] }
+      };
+      period.addEventListener("change", () => {
+        const data = periodData[period.value];
+        document.querySelector('[data-metric="participants"]').textContent = data.participants;
+        document.querySelector('[data-metric="activities"]').textContent = data.activities;
+        document.querySelector('[data-metric="volunteers"]').textContent = data.volunteers;
+        document.querySelector("#chart-caption").textContent = data.caption;
+        document.querySelectorAll("#chart-bars .bar").forEach((bar, index) => { bar.style.height = `${data.bars[index]}%`; });
+      });
+
+      document.querySelectorAll(".nav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.querySelectorAll(".nav a").forEach((item) => item.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
