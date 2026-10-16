@@ -129,8 +129,6 @@ button { cursor: pointer; }
 .brand-hero-copy { display: flex; flex-direction: column; gap: 2px; }
 .brand-hero-label { color: #776b5e; font-size: 9px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
 .brand-hero h1 { color: #30271f; font: 800 20px/1.15 "Manrope", sans-serif; letter-spacing: 0.3px; margin: 0; }
-.header-cta { align-items: center; background: #806143; border-radius: 24px; color: #fff; display: inline-flex; flex: 0 0 auto; font-size: 12px; font-weight: 700; gap: 9px; min-height: 40px; padding: 0 17px; text-decoration: none; transition: background 160ms ease; }
-.header-cta:hover { background: #654b32; }
 .crumb { color: #111111; font-size: 12px; }
 .crumb strong { color: #111111; font-weight: 600; }
 .top-actions { align-items: center; display: flex; gap: 17px; }
@@ -389,7 +387,6 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .brand-hero { flex: 1 1 100%; justify-content: center; }
   .brand-logo { height: 44px; width: 44px; }
   .brand-hero h1 { font-size: 18px; }
-  .header-cta { min-height: 36px; }
   .nav { gap: 5px; }
   .nav a { font-size: 12px; gap: 6px; min-height: 36px; padding: 0 8px; }
   .contact-section { margin-left: -14px; margin-right: -14px; padding: 34px 14px 30px; }
