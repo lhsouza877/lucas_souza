@@ -95,6 +95,7 @@ button { cursor: pointer; }
 .nav { display: flex; flex-wrap: wrap; gap: 5px 8px; justify-content: center; margin-top: 7px; padding: 0 0 2px; width: 100%; }
 .nav a {
   align-items: center;
+  background: #f3efe6;
   border-radius: 7px;
   color: #2f6ecb;
   display: flex;
@@ -107,8 +108,8 @@ button { cursor: pointer; }
   transition: background 160ms ease, color 160ms ease;
 }
 .nav a i { font-size: 15px; text-align: center; width: 17px; }
-.nav a:hover { background: #f4f6f2; color: #2f6ecb; }
-.nav a.active { background: transparent; color: #2f6ecb; font-weight: 700; }
+.nav a:hover { background: #eee5d8; color: #2f6ecb; }
+.nav a.active { background: #e7dac8; color: #2f6ecb; font-weight: 700; }
 .nav-count { background: var(--coral-soft); border-radius: 20px; color: var(--coral); font-size: 10px; font-weight: 700; margin-left: auto; padding: 3px 7px; }
 .sidebar-bottom { border-top: 1px solid var(--line); margin-top: auto; padding-top: 15px; }
 .church-mini { align-items: center; display: flex; gap: 10px; padding: 7px; }
@@ -241,15 +242,40 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
 .bar-label { color: var(--muted); font-size: 9px; padding-top: 8px; }
 .chart-foot { color: var(--muted); display: flex; font-size: 9px; justify-content: space-between; padding-top: 7px; }
 
-.church-info-list { display: grid; gap: 17px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 18px; }
-.church-info-item { align-items: start; border-bottom: 1px solid var(--line); display: grid; gap: 12px; grid-template-columns: 34px minmax(0, 1fr); padding-bottom: 17px; }
-.church-info-item:last-child { border-bottom: 0; padding-bottom: 0; }
-.church-info-icon { align-items: center; background: var(--green-soft); border-radius: 6px; color: var(--green); display: flex; height: 34px; justify-content: center; width: 34px; }
-.church-info-copy h3 { font: 700 15px "Manrope", sans-serif; color: #000000; }
-.church-info-copy p { color: #000000 !important; font-size: 14px; line-height: 1.55; margin-top: 6px; }
-.church-info-copy a { align-items: center; color: #000000 !important; display: inline-flex; font-size: 14px; font-weight: 700; gap: 6px; margin-top: 8px; text-decoration: none; }
-.church-info-copy a:hover { text-decoration: underline; }
-.church-info-panel { margin-top: 22px; }
+.contact-section {
+  background: #fff;
+  margin: 38px -36px 0;
+  padding: 43px 36px 40px;
+}
+.closing-heading { margin: 0 auto; max-width: 620px; text-align: center; }
+.closing-eyebrow { color: #8b6746; display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+.closing-heading h2 { color: #30271f; font: 800 23px/1.25 "Manrope", sans-serif; margin-top: 6px; }
+.closing-heading p { color: #776b5e; font-size: 12px; line-height: 1.6; margin-top: 7px; }
+.contact-list { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 23px auto 0; max-width: 760px; }
+.contact-card { align-items: center; background: #fffdfa; border: 1px solid #e4dbcd; border-radius: 12px; color: #30271f; display: flex; gap: 12px; min-height: 66px; padding: 12px 14px; text-decoration: none; transition: border-color 160ms ease, transform 160ms ease; }
+.contact-card:hover { border-color: #a17c58; transform: translateY(-2px); }
+.closing-icon { align-items: center; background: #f1eadf; border-radius: 9px; color: #8b6746; display: inline-flex; flex: 0 0 36px; height: 36px; justify-content: center; width: 36px; }
+.contact-card strong, .contact-card small { display: block; }
+.contact-card strong { font-size: 12px; }
+.contact-card small { color: #776b5e; font-size: 11px; margin-top: 3px; }
+.contact-arrow { color: #a17c58; font-size: 10px; margin-left: auto; }
+.location-section { background: #fff; margin: 0 -36px; padding: 39px 36px 40px; }
+.location-layout { align-items: stretch; display: grid; gap: 14px; grid-template-columns: minmax(220px, .72fr) minmax(0, 1fr); margin: 22px auto 0; max-width: 1120px; }
+.address-card { align-content: center; background: #fffdfa; border: 1px solid #e4dbcd; border-radius: 12px; min-height: 180px; padding: 18px; }
+.address-card h3 { color: #30271f; font: 700 13px "Manrope", sans-serif; margin-top: 11px; }
+.address-card p { color: #776b5e; font-size: 12px; line-height: 1.6; margin-top: 6px; }
+.map-link { align-items: center; background: #806143; border-radius: 20px; color: white; display: inline-flex; font-size: 10px; font-weight: 700; gap: 7px; margin-top: 14px; padding: 9px 12px; text-decoration: none; }
+.map-link:hover { background: #654b32; }
+.location-map { border: 1px solid #e4dbcd; border-radius: 12px; min-height: 180px; overflow: hidden; }
+.location-map iframe { border: 0; display: block; height: 100%; min-height: 180px; width: 100%; }
+.site-footer { align-items: center; background: #f3efe6; border-top: 1px solid #e4dbcd; color: #30271f; display: flex; flex-direction: column; gap: 7px; margin: -38px 0 0; padding: 25px 24px 22px; text-align: center; }
+.footer-logo { border-radius: 50%; height: 38px; object-fit: cover; width: 38px; }
+.site-footer > strong { font: 700 12px "Manrope", sans-serif; margin-top: 2px; }
+.site-footer p, .footer-contact { color: #776b5e; font-size: 10px; line-height: 1.5; }
+.footer-contact { align-items: center; display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+.footer-contact a { color: inherit; text-decoration: none; }
+.footer-contact a:hover { text-decoration: underline; }
+.site-footer > small { color: #928577; font-size: 9px; margin-top: 2px; }
 .service-sheet { margin-top: 22px; }
 .service-sheet .panel-head h2, .church-info-panel .panel-head h2 { font-size: 16px; color: #000000; }
 .service-sheet .panel-subtitle, .church-info-panel .panel-subtitle { font-size: 13px; color: #000000; }
@@ -338,10 +364,19 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .topbar { margin-bottom: 14px; }
   .profile-name, .profile-role { display: none; }
   .top-actions { gap: 8px; }
+  .contact-section { margin-left: -18px; margin-right: -18px; padding-left: 18px; padding-right: 18px; }
+  .location-section { margin-left: -18px; margin-right: -18px; padding-left: 18px; padding-right: 18px; }
+  .site-footer { margin-top: -28px; }
 }
 @media (max-width: 620px) {
-  .church-info-list { grid-template-columns: minmax(0, 1fr); }
   .main { padding-left: 14px; padding-right: 14px; }
+  .contact-section { margin-left: -14px; margin-right: -14px; padding: 34px 14px 30px; }
+  .contact-list { grid-template-columns: minmax(0, 1fr); margin-top: 18px; }
+  .location-section { margin-left: -14px; margin-right: -14px; padding: 32px 14px; }
+  .location-layout { grid-template-columns: minmax(0, 1fr); margin-top: 18px; }
+  .address-card { min-height: 0; }
+  .location-map, .location-map iframe { min-height: 230px; }
+  .site-footer { margin-top: -28px; padding: 23px 14px 20px; }
   .page-heading { align-items: flex-start; flex-direction: column; gap: 14px; padding: 21px 0 16px; }
   h1 { font-size: 22px; }
   .heading-actions { width: 100%; }

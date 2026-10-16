@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="dashboard.css?v=340c1b9" />
+    <link rel="stylesheet" href="dashboard.css?v=20261015" />
   </head>
   <body class="dark-preview">
     <div class="app">
@@ -34,7 +34,7 @@
           <div class="welcome-content">
             <div class="welcome-kicker"></div>
             <h2>Arca da Aliança em Movimento</h2>
-            <p>Estamos nas ruas, nos caceres, nos lares, nas comunidades pregando o evangelho.</p>
+            <p>Estamos nas ruas, nos cárceres, nos lares, nas comunidades pregando o evangelho.</p>
             <p>Não ficamos retido há um templo, mas cumprimos o ide do Senhor!</p>
           </div>
           <div class="welcome-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i><span></span></div>
@@ -109,35 +109,65 @@
           </div>
         </section>
 
-        <section class="panel church-info-panel" id="atividades">
-          <div class="panel-head"><div><h2>Informações da igreja</h2><p class="panel-subtitle">Localização e contato</p></div></div>
-          <div class="church-info-list">
-            <div class="church-info-item">
-              <span class="church-info-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-              <div class="church-info-copy">
-                <h3>Localização</h3>
-                <p>Quadra 0, 28 - Aurá, Ananindeua - PA.</p>
-                <a href="https://maps.app.goo.gl/gEr5ApzBTGcpxext6" target="_blank" rel="noopener noreferrer">Abrir no mapa <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-              </div>
+        <section class="contact-section" id="contato" aria-labelledby="contact-title">
+          <div class="closing-heading">
+            <span class="closing-eyebrow">Contato</span>
+            <h2 id="contact-title">Fale com a gente</h2>
+            <p>Estamos à disposição para conversar, tirar dúvidas e receber sua visita.</p>
+          </div>
+          <div class="contact-list">
+            <a class="contact-card" href="tel:+5591983132245">
+              <span class="closing-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+              <span><strong>Telefone / WhatsApp</strong><small>91 98313-2245</small></span>
+              <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+            </a>
+            <a class="contact-card" href="https://www.instagram.com/arcadaalianca_aura?utm_source=ig_web_button_share_sheet&;srtk=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+              <span class="closing-icon"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
+              <span><strong>Instagram</strong><small>@arcadaalianca_aura</small></span>
+              <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+            </a>
+          </div>
+        </section>
+
+        <section class="location-section" id="atividades" aria-labelledby="location-title">
+          <div class="closing-heading">
+            <span class="closing-eyebrow">Localização</span>
+            <h2 id="location-title">Como chegar</h2>
+            <p>Estamos no bairro Aurá, em Ananindeua - PA. Será uma alegria receber você!</p>
+          </div>
+          <div class="location-layout">
+            <div class="address-card">
+              <span class="closing-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+              <h3>Endereço</h3>
+              <p>Quadra 0, 28 - Aurá, Ananindeua - PA.</p>
+              <a class="map-link" href="https://maps.app.goo.gl/gEr5ApzBTGcpxext6" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Abrir no Google Maps
+              </a>
             </div>
-            <div class="church-info-item">
-              <span class="church-info-icon"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
-              <div class="church-info-copy">
-                <h3>Instagram da igreja</h3>
-                <p><a href="https://www.instagram.com/arcadaalianca_aura?utm_source=ig_web_button_share_sheet&amp;srtk=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">@arcadaalianca_aura <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></p>
-              </div>
-            </div>
-            <div class="church-info-item">
-              <span class="church-info-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-              <div class="church-info-copy">
-                <h3>Contato</h3>
-                <p><a href="tel:+5591982487263">91 98313-2245</a></p>
-              </div>
+            <div class="location-map">
+              <iframe
+                title="Mapa da Assembleia de Deus Arca da Aliança no bairro Aurá"
+                src="https://www.google.com/maps?q=Quadra+0,+28,+Aur%C3%A1,+Ananindeua+-+PA&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
             </div>
           </div>
         </section>
 
       </main>
+      <footer class="site-footer">
+        <img src="logo_arca.jpg" alt="" class="footer-logo" />
+        <strong>Assembleia de Deus Arca da Aliança</strong>
+        <p>Quadra 0, 28 - Aurá, Ananindeua - PA</p>
+        <div class="footer-contact">
+          <a href="tel:+5591983132245">(91) 98313-2245</a>
+          <span aria-hidden="true">•</span>
+          <a href="https://www.instagram.com/arcadaalianca_aura?utm_source=ig_web_button_share_sheet&;srtk=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">@arcadaalianca_aura</a>
+        </div>
+        <small>© 2026 Igreja Arca da Aliança. Todos os direitos reservados.</small>
+      </footer>
     </div>
 
     <script>
