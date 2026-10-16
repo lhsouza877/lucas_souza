@@ -251,14 +251,17 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
 .contact-section {
   background: #fff;
   margin: 38px -36px 0;
-  padding: 43px 36px 40px;
+  padding: 52px 36px 50px;
 }
 .closing-heading { margin: 0 auto; max-width: 620px; text-align: center; }
 .closing-eyebrow { color: #8b6746; display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
 .closing-heading h2 { color: #30271f; font: 800 23px/1.25 "Manrope", sans-serif; margin-top: 6px; }
 .closing-heading p { color: #776b5e; font-size: 12px; line-height: 1.6; margin-top: 7px; }
-.contact-list { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 23px auto 0; max-width: 760px; }
-.contact-card { align-items: center; background: #fffdfa; border: 1px solid #e4dbcd; border-radius: 12px; color: #30271f; display: flex; gap: 12px; min-height: 66px; padding: 12px 14px; text-decoration: none; transition: border-color 160ms ease, transform 160ms ease; }
+.contact-section .closing-eyebrow { font-size: 11px; }
+.contact-section .closing-heading h2 { font-size: 28px; }
+.contact-section .closing-heading p { font-size: 14px; }
+.contact-list { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 28px auto 0; max-width: 940px; }
+.contact-card { align-items: center; background: #fffdfa; border: 1px solid #e4dbcd; border-radius: 12px; color: #30271f; display: flex; gap: 16px; min-height: 182px; padding: 22px; text-decoration: none; transition: border-color 160ms ease, transform 160ms ease; }
 .contact-card:hover { border-color: #a17c58; transform: translateY(-2px); }
 .closing-icon { align-items: center; background: #f1eadf; border-radius: 9px; color: #8b6746; display: inline-flex; flex: 0 0 36px; height: 36px; justify-content: center; width: 36px; }
 .contact-card strong, .contact-card small { display: block; }
@@ -378,6 +381,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .profile-name, .profile-role { display: none; }
   .top-actions { gap: 8px; }
   .contact-section { margin-left: -18px; margin-right: -18px; padding-left: 18px; padding-right: 18px; }
+  .contact-list { max-width: 100%; }
   .location-section { margin-left: -18px; margin-right: -18px; padding-left: 18px; padding-right: 18px; }
   .site-footer { margin-top: -28px; }
 }
@@ -389,7 +393,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .brand-hero h1 { font-size: 18px; }
   .nav { gap: 5px; }
   .nav a { font-size: 12px; gap: 6px; min-height: 36px; padding: 0 8px; }
-  .contact-section { margin-left: -14px; margin-right: -14px; padding: 34px 14px 30px; }
+  .contact-section { margin-left: -14px; margin-right: -14px; padding: 40px 14px 36px; }
   .contact-list { grid-template-columns: minmax(0, 1fr); margin-top: 18px; }
   .location-section { margin-left: -14px; margin-right: -14px; padding: 32px 14px; }
   .location-layout { grid-template-columns: minmax(0, 1fr); margin-top: 18px; }
