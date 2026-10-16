@@ -54,10 +54,7 @@ body.dark-preview .eyebrow,
 body.dark-preview .about-heading,
 body.dark-preview .church-info-copy a { color: var(--green); }
 body.dark-preview .about-description,
-body.dark-preview .church-info-copy p,
-body.dark-preview .service-table tbody th,
-body.dark-preview .service-table tbody td { color: #dce6de; }
-body.dark-preview .service-table tbody tr:nth-child(even) { background: var(--surface); }
+body.dark-preview .church-info-copy p { color: #dce6de; }
 body.dark-preview .bar.current { background: var(--green); }
 
 button, select, input, textarea { font: inherit; }
@@ -278,49 +275,19 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
 .footer-contact a { color: inherit; text-decoration: none; }
 .footer-contact a:hover { text-decoration: underline; }
 .site-footer > small { color: #928577; font-size: 9px; margin-top: 2px; }
-.service-sheet { margin-top: 22px; }
-.service-sheet .panel-head h2, .church-info-panel .panel-head h2 { font-size: 16px; color: #000000; }
-.service-sheet .panel-subtitle, .church-info-panel .panel-subtitle { font-size: 13px; color: #000000; }
-.service-sheet-scroll { overflow-x: auto; padding: 16px 18px 18px; }
-.service-table {
-  border-collapse: collapse;
-  min-width: 440px;
-  width: 100%;
-  background: #f2f2f2;
-  border: 1px solid #d5d5d5;
-}
-.service-table th, .service-table td {
-  border: 1px solid #d5d5d5;
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 14px;
-  line-height: 1.4;
-}
-.service-table thead th {
-  background: #d7d7d7;
-  color: #000000;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.service-table tbody th, .service-table tbody td {
-  color: #000000 !important;
-  background: #f5f5f5;
-  font-weight: 600;
-}
-.service-table tbody th { font-weight: 700; }
-.service-table tbody td { color: #000000 !important; }
-.service-table tbody tr:nth-child(even) { background: #efefef; }
-.service-table tbody tr:nth-child(odd) { background: #f7f7f7; }
-.service-table .day-highlight {
-  background: #d9d9d9 !important;
-}
-.service-table .day-highlight th,
-.service-table .day-highlight td {
-  color: #000000;
-  background: #d9d9d9 !important;
-}
+.service-section { background: #f3efe6; margin: 38px -36px 0; padding: 43px 36px 45px; }
+.service-heading { max-width: 760px; }
+.service-heading .closing-eyebrow { font-size: 11px; }
+.service-heading h2 { color: #30271f; font: 800 30px/1.2 "Manrope", sans-serif; margin-top: 10px; }
+.service-heading p { color: #776b5e; font-size: 14px; margin-top: 10px; }
+.service-grid { display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 48px auto 0; max-width: 1232px; }
+.service-card { background: #fffdfa; border: 1px solid #e4dbcd; border-radius: 16px; box-shadow: 0 2px 4px rgba(48, 39, 31, .08); display: flex; flex-direction: column; min-height: 248px; padding: 26px; }
+.service-icon { align-items: center; background: #f1eadf; border-radius: 18px; color: #8b6746; display: flex; font-size: 22px; height: 52px; justify-content: center; width: 52px; }
+.service-day { color: #8b6746; font-size: 14px; margin-top: 19px; text-transform: uppercase; }
+.service-card h3 { color: #30271f; font: 800 21px/1.3 "Manrope", sans-serif; margin-top: 5px; }
+.service-time { align-items: center; color: #30271f; display: flex; font-size: 14px; gap: 9px; margin-top: 11px; }
+.service-time i { color: #8b735c; }
+.service-description { color: #776b5e; font-size: 14px; line-height: 1.5; margin-top: 15px; }
 .photo-trend { margin-top: 24px; padding: 18px 0 0; }
 .photo-trend-head { border-bottom: 1px solid var(--line); margin-bottom: 13px; padding: 0 2px 12px; }
 .photo-trend-head h2 { font: 700 14px "Manrope", sans-serif; color: #000000; }
@@ -356,6 +323,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .nav a { gap: 8px; padding-left: 9px; padding-right: 9px; }
   .welcome { margin-left: -25px; margin-right: -25px; padding-left: max(25px, calc((100vw - 1200px) / 2)); padding-right: 25px; }
   .contact-section, .location-section { margin-left: -25px; margin-right: -25px; padding-left: 25px; padding-right: 25px; }
+  .service-section { margin-left: -25px; margin-right: -25px; padding-left: 25px; padding-right: 25px; }
   .metrics { gap: 9px; }
   .metric { padding: 13px; }
 }
@@ -374,6 +342,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .profile-name, .profile-role { display: none; }
   .top-actions { gap: 8px; }
   .contact-section { margin-left: -18px; margin-right: -18px; padding-left: 18px; padding-right: 18px; }
+  .service-section { margin-left: -18px; margin-right: -18px; padding-left: 18px; padding-right: 18px; }
   .contact-list { max-width: 100%; }
   .location-section { margin-left: -18px; margin-right: -18px; padding-left: 18px; padding-right: 18px; }
   .site-footer { margin-top: -28px; }
@@ -387,6 +356,10 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   .nav { gap: 5px; }
   .nav a { font-size: 12px; gap: 6px; min-height: 36px; padding: 0 8px; }
   .contact-section { margin-left: -14px; margin-right: -14px; padding: 40px 14px 36px; }
+  .service-section { margin-left: -14px; margin-right: -14px; padding: 36px 14px; }
+  .service-heading h2 { font-size: 26px; }
+  .service-grid { gap: 14px; grid-template-columns: minmax(0, 1fr); margin-top: 30px; }
+  .service-card { min-height: 220px; padding: 22px; }
   .contact-list { grid-template-columns: minmax(0, 1fr); margin-top: 18px; }
   .location-section { margin-left: -14px; margin-right: -14px; padding: 32px 14px; }
   .location-layout { grid-template-columns: minmax(0, 1fr); margin-top: 18px; }

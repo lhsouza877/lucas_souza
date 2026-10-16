@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="dashboard.css?v=20261015-layout6" />
+    <link rel="stylesheet" href="dashboard.css?v=20261015-layout7" />
   </head>
   <body class="dark-preview">
     <div class="app">
@@ -92,22 +92,34 @@
           </div>
         </section>
 
-        <section class="panel service-sheet" id="dias-culto" aria-labelledby="service-sheet-title">
-          <div class="panel-head">
-            <div><h2 id="service-sheet-title">Dias de culto</h2><p class="panel-subtitle">Programação semanal</p></div>
+        <section class="service-section" id="dias-culto" aria-labelledby="service-sheet-title">
+          <div class="closing-heading service-heading">
+            <span class="closing-eyebrow">Dias de culto</span>
+            <h2 id="service-sheet-title">Venha celebrar conosco</h2>
+            <p>Nossas portas estão abertas para você e sua família durante a semana.</p>
           </div>
-          <div class="service-sheet-scroll">
-            <table class="service-table">
-              <caption class="sr-only">Dias, horários e atividades da igreja</caption>
-              <thead>
-                <tr><th scope="col">Dia</th><th scope="col">Horário</th><th scope="col">Atividade</th></tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Terça-feira</th><td>19h30</td><td>Culto</td></tr>
-                <tr class="day-highlight"><th scope="row">Quinta-feira</th><td>19h</td><td>Escola Bíblica</td></tr>
-                <tr><th scope="row">Domingo</th><td>18h</td><td>Culto da Família</td></tr>
-              </tbody>
-            </table>
+          <div class="service-grid">
+            <article class="service-card">
+              <span class="service-icon"><i class="fa-regular fa-calendar-days" aria-hidden="true"></i></span>
+              <p class="service-day">Terça-feira</p>
+              <h3>Culto</h3>
+              <p class="service-time"><i class="fa-regular fa-clock" aria-hidden="true"></i><time datetime="19:30">19h30</time></p>
+              <p class="service-description">Louvor, palavra e comunhão durante a semana.</p>
+            </article>
+            <article class="service-card">
+              <span class="service-icon"><i class="fa-regular fa-calendar-days" aria-hidden="true"></i></span>
+              <p class="service-day">Quinta-feira</p>
+              <h3>Escola Bíblica</h3>
+              <p class="service-time"><i class="fa-regular fa-clock" aria-hidden="true"></i><time datetime="19:00">19h00</time></p>
+              <p class="service-description">Estudo da palavra de Deus para aprofundar a fé.</p>
+            </article>
+            <article class="service-card">
+              <span class="service-icon"><i class="fa-regular fa-calendar-days" aria-hidden="true"></i></span>
+              <p class="service-day">Domingo</p>
+              <h3>Culto da Família</h3>
+              <p class="service-time"><i class="fa-regular fa-clock" aria-hidden="true"></i><time datetime="18:00">18h00</time></p>
+              <p class="service-description">Celebração especial para toda a família.</p>
+            </article>
           </div>
         </section>
 
