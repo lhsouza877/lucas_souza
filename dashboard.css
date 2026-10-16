@@ -19,7 +19,7 @@
 
 body {
   margin: 0;
-  background: #ffffff;
+  background: #f3efe6;
   color: var(--ink);
   font-family: "DM Sans", sans-serif;
   font-size: 14px;
@@ -118,9 +118,9 @@ button { cursor: pointer; }
   margin-left: 0;
   min-height: 100vh;
   padding: 20px 36px 38px;
-  background: #ffffff;
+  background: #f3efe6;
 }
-.topbar { align-items: center; background: #fbf8f2; border-bottom: 1px solid #eee6d8; display: flex; flex-direction: row; gap: 12px 22px; height: auto; justify-content: space-between; margin: -20px -36px 24px; min-height: 78px; padding: 10px 36px; }
+.topbar { align-items: center; background: #f3efe6; border-bottom: 1px solid #eee6d8; display: flex; flex-direction: row; gap: 12px 22px; height: auto; justify-content: space-between; margin: -20px -36px 24px; min-height: 78px; padding: 10px 36px; }
 .brand-hero { align-items: center; display: flex; flex: 0 0 auto; gap: 12px; }
 .brand-logo { border-radius: 50%; box-shadow: 0 6px 14px rgba(34, 55, 42, 0.12); height: 48px; object-fit: cover; width: 48px; }
 .brand-hero-copy { display: flex; flex-direction: column; gap: 2px; }
@@ -200,7 +200,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
   min-width: 0;
   box-shadow: none;
 }
-#sobre-igreja { min-height: 400px; }
+#sobre-igreja { background: #f3efe6; min-height: 400px; }
 .panel-head { align-items: center; display: flex; justify-content: space-between; padding: 17px 18px 0; }
 .panel-head h2 { font: 700 13px "Manrope", sans-serif; }
 .panel-subtitle { color: #111111; font-size: 10px; margin-top: 4px; }
@@ -239,7 +239,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
 .chart-foot { color: var(--muted); display: flex; font-size: 9px; justify-content: space-between; padding-top: 7px; }
 
 .contact-section {
-  background: #fff;
+  background: #f3efe6;
   margin: 38px -36px 0;
   padding: 52px 36px 50px;
 }
@@ -258,7 +258,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
 .contact-card strong { font-size: 12px; }
 .contact-card small { color: #776b5e; font-size: 11px; margin-top: 3px; }
 .contact-arrow { color: #a17c58; font-size: 10px; margin-left: auto; }
-.location-section { background: #fff; margin: 0 -36px; padding: 39px 36px 40px; }
+.location-section { background: #f3efe6; margin: 0 -36px; padding: 39px 36px 40px; }
 .location-layout { align-items: stretch; display: grid; gap: 14px; grid-template-columns: minmax(220px, .72fr) minmax(0, 1fr); margin: 22px auto 0; max-width: 1120px; }
 .address-card { align-content: center; background: #fffdfa; border: 1px solid #e4dbcd; border-radius: 12px; min-height: 180px; padding: 18px; }
 .address-card h3 { color: #30271f; font: 700 13px "Manrope", sans-serif; margin-top: 11px; }
@@ -267,7 +267,7 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
 .map-link:hover { background: #654b32; }
 .location-map { border: 1px solid #e4dbcd; border-radius: 12px; min-height: 180px; overflow: hidden; }
 .location-map iframe { border: 0; display: block; height: 100%; min-height: 180px; width: 100%; }
-.site-footer { align-items: center; background: #f3efe6; border-top: 1px solid #e4dbcd; color: #30271f; display: flex; flex-direction: column; gap: 7px; margin: -38px 0 0; padding: 25px 24px 22px; text-align: center; }
+.site-footer { align-items: center; background: #e5e5e5; border-top: 1px solid #d2d2d2; color: #30271f; display: flex; flex-direction: column; gap: 7px; margin: -38px 0 0; padding: 25px 24px 22px; text-align: center; }
 .footer-logo { border-radius: 50%; height: 38px; object-fit: cover; width: 38px; }
 .site-footer > strong { font: 700 12px "Manrope", sans-serif; margin-top: 2px; }
 .site-footer p, .footer-contact { color: #776b5e; font-size: 10px; line-height: 1.5; }
