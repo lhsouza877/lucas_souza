@@ -255,14 +255,14 @@ h1 { font: 800 25px/1.25 "Manrope", sans-serif; margin-top: 5px; }
 .contact-card:hover { border-color: #a17c58; transform: translateY(-2px); }
 .closing-icon { align-items: center; background: #f1eadf; border-radius: 9px; color: #8b6746; display: inline-flex; flex: 0 0 36px; height: 36px; justify-content: center; width: 36px; }
 .contact-card strong, .contact-card small { display: block; }
-.contact-card strong { font-size: 12px; }
-.contact-card small { color: #776b5e; font-size: 11px; margin-top: 3px; }
+.contact-card strong { font-size: 14px; }
+.contact-card small { color: #776b5e; font-size: 21px; line-height: 1.3; margin-top: 3px; }
 .contact-arrow { color: #a17c58; font-size: 10px; margin-left: auto; }
 .location-section { background: #f3efe6; margin: 0 -36px; padding: 39px 36px 40px; }
 .location-layout { align-items: stretch; display: grid; gap: 14px; grid-template-columns: minmax(220px, .72fr) minmax(0, 1fr); margin: 22px auto 0; max-width: 1120px; }
 .address-card { align-content: center; background: #fffdfa; border: 1px solid #e4dbcd; border-radius: 12px; min-height: 180px; padding: 18px; }
-.address-card h3 { color: #30271f; font: 700 13px "Manrope", sans-serif; margin-top: 11px; }
-.address-card p { color: #776b5e; font-size: 12px; line-height: 1.6; margin-top: 6px; }
+.address-card h3 { color: #30271f; font: 700 14px "Manrope", sans-serif; margin-top: 11px; }
+.address-card p { color: #776b5e; font-size: 21px; line-height: 1.3; margin-top: 6px; }
 .map-link { align-items: center; background: #806143; border-radius: 20px; color: white; display: inline-flex; font-size: 10px; font-weight: 700; gap: 7px; margin-top: 14px; padding: 9px 12px; text-decoration: none; }
 .map-link:hover { background: #654b32; }
 .location-map { border: 1px solid #e4dbcd; border-radius: 12px; min-height: 180px; overflow: hidden; }
