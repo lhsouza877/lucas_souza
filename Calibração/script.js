@@ -6,6 +6,7 @@ const rowsContainer = document.querySelector("#measurement-rows");
 const historyList = document.querySelector("#history-list");
 const formMessage = document.querySelector("#form-message");
 const storageStatus = document.querySelector("#storage-status");
+const selectedRecordIds = new Set();
 let activeRecordId = null;
 
 function localDateValue(date = new Date()) {
@@ -73,11 +74,11 @@ function createPointRow(index, point = {}) {
     row.append(input);
   }
 
-  const ideal = document.createElement("output");
-  ideal.className = "computed-value";
-  ideal.dataset.computed = "ideal";
-  ideal.textContent = "—";
-  row.append(ideal);
+  const netWeight = document.createElement("output");
+  netWeight.className = "computed-value";
+  netWeight.dataset.computed = "net-weight";
+  netWeight.textContent = "—";
+  row.append(netWeight);
 
   const error = document.createElement("output");
   error.className = "computed-value computed-error";
@@ -109,37 +110,49 @@ function renumberRows() {
 
 function calculateRow(row) {
   const values = Object.fromEntries([...row.querySelectorAll("[data-field]")].map((input) => [input.dataset.field, parseValue(input.value)]));
-  const ideal = row.querySelector('[data-computed="ideal"]');
+  const netWeightOutput = row.querySelector('[data-computed="net-weight"]');
   const error = row.querySelector('[data-computed="error"]');
   const isComplete = Object.values(values).every((value) => value !== null);
   if (!isComplete || values.requested <= 0) {
-    ideal.textContent = "—";
+    netWeightOutput.textContent = "—";
     error.textContent = "—";
     error.classList.remove("positive", "negative");
     row.dataset.complete = "false";
+    row.dataset.invalidNetWeight = "false";
     return null;
   }
 
-  const idealWeight = values.tare + values.requested;
-  const errorPercent = ((values.actual - idealWeight) / values.requested) * 100;
-  ideal.textContent = formatNumber(idealWeight);
+  const netWeight = values.actual - values.tare;
+  netWeightOutput.textContent = formatNumber(netWeight);
+  if (netWeight <= 0) {
+    error.textContent = "N/D";
+    error.classList.remove("positive", "negative");
+    row.dataset.complete = "false";
+    row.dataset.invalidNetWeight = "true";
+    return null;
+  }
+
+  const errorPercent = ((netWeight - values.requested) / netWeight) * 100;
   error.textContent = `${errorPercent > 0 ? "+" : ""}${formatNumber(errorPercent)}%`;
   error.classList.toggle("positive", errorPercent > 0);
   error.classList.toggle("negative", errorPercent < 0);
   row.dataset.complete = "true";
-  return { ...values, ideal: idealWeight, errorPercent };
+  row.dataset.invalidNetWeight = "false";
+  return { ...values, netWeight, errorPercent };
 }
 
 function getMeasurementData() {
   const points = [];
   let hasPartialPoint = false;
+  let hasInvalidNetWeight = false;
   [...rowsContainer.children].forEach((row) => {
     const result = calculateRow(row);
     const anyFilled = [...row.querySelectorAll("[data-field]")].some((input) => input.value.trim() !== "");
     if (result) points.push(result);
     else if (anyFilled) hasPartialPoint = true;
+    if (row.dataset.invalidNetWeight === "true") hasInvalidNetWeight = true;
   });
-  return { points, hasPartialPoint };
+  return { points, hasPartialPoint, hasInvalidNetWeight };
 }
 
 function updateSummary() {
@@ -171,6 +184,15 @@ function makeHistoryCard(record) {
   meta.textContent = `${record.scale} · ${record.points.length} ${record.points.length === 1 ? "ponto" : "pontos"}`;
   const actions = document.createElement("div");
   actions.className = "history-actions";
+  const selectLabel = document.createElement("label");
+  selectLabel.className = "history-select";
+  const select = document.createElement("input");
+  select.type = "checkbox";
+  select.checked = selectedRecordIds.has(record.id);
+  select.dataset.recordSelect = "";
+  select.dataset.recordId = record.id;
+  select.setAttribute("aria-label", `Incluir ${record.material}, ${formatDate(record.date)}, no PDF`);
+  selectLabel.append(select, document.createTextNode("PDF"));
   const open = document.createElement("button");
   open.type = "button";
   open.textContent = activeRecordId === record.id ? "Em edição" : "Abrir";
@@ -180,16 +202,31 @@ function makeHistoryCard(record) {
   remove.type = "button";
   remove.textContent = "Excluir";
   remove.addEventListener("click", () => deleteRecord(record.id));
-  actions.append(open, remove);
+  actions.append(selectLabel, open, remove);
   card.append(heading, meta, actions);
   return card;
 }
 
+function updateSelectionControls(filteredRecords) {
+  const selectVisible = document.querySelector("#select-visible-records");
+  const selectedVisibleCount = filteredRecords.filter((record) => selectedRecordIds.has(record.id)).length;
+  selectVisible.checked = filteredRecords.length > 0 && selectedVisibleCount === filteredRecords.length;
+  selectVisible.indeterminate = selectedVisibleCount > 0 && selectedVisibleCount < filteredRecords.length;
+  selectVisible.disabled = filteredRecords.length === 0;
+  const selectedCount = selectedRecordIds.size;
+  document.querySelector("#selection-count").textContent = `${selectedCount} ${selectedCount === 1 ? "histórico selecionado" : "históricos selecionados"}`;
+}
+
 function renderHistory() {
   const records = readRecords().sort((a, b) => (b.date || "").localeCompare(a.date || "") || (b.createdAt || "").localeCompare(a.createdAt || ""));
+  const recordIds = new Set(records.map((record) => record.id));
+  for (const id of selectedRecordIds) {
+    if (!recordIds.has(id)) selectedRecordIds.delete(id);
+  }
   const query = document.querySelector("#history-search").value.trim().toLocaleLowerCase("pt-BR");
   const filtered = records.filter((record) => `${record.material} ${record.scale} ${record.operator || ""}`.toLocaleLowerCase("pt-BR").includes(query));
   historyList.replaceChildren(...filtered.map(makeHistoryCard));
+  updateSelectionControls(filtered);
   document.querySelector("#history-count").textContent = String(records.length);
   document.querySelector("#empty-history").hidden = filtered.length > 0;
   document.querySelector("#empty-history").textContent = records.length && !filtered.length ? "Nenhum registro corresponde à busca." : "As calibrações salvas neste navegador aparecerão aqui.";
@@ -233,14 +270,19 @@ function deleteRecord(id) {
   if (!window.confirm("Excluir esta calibração do histórico deste navegador?")) return;
   const records = readRecords().filter((record) => record.id !== id);
   if (!writeRecords(records)) return;
+  selectedRecordIds.delete(id);
   if (activeRecordId === id) resetForm();
   renderHistory();
   updateSummary();
 }
 
 function buildRecord() {
-  const { points, hasPartialPoint } = getMeasurementData();
+  const { points, hasPartialPoint, hasInvalidNetWeight } = getMeasurementData();
   if (!form.reportValidity()) return null;
+  if (hasInvalidNetWeight) {
+    formMessage.textContent = "O peso real deve ser maior que a tara para calcular um peso líquido positivo.";
+    return null;
+  }
   if (hasPartialPoint) {
     formMessage.textContent = "Complete tara, pedido e peso real em cada ponto iniciado.";
     return null;
@@ -267,27 +309,92 @@ function buildRecord() {
   };
 }
 
-function exportCsv() {
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
+
+function exportPdf() {
   const records = readRecords();
   if (!records.length) {
     formMessage.textContent = "Ainda não há registros para exportar.";
     return;
   }
-  const header = ["Data", "Material", "Balança", "Unidade", "Responsável", "Ponto", "Tara", "Pedido", "Peso ideal", "Peso real", "Erro %", "Observações"];
-  const escape = (value) => `"${String(value ?? "").replaceAll('"', '""')}"`;
-  const lines = [header.map(escape).join(";")];
-  for (const record of records) {
-    for (const [index, point] of record.points.entries()) {
-      lines.push([record.date, record.material, record.scale, record.unit, record.operator, index + 1, point.tare, point.requested, point.ideal, point.actual, point.errorPercent, record.notes].map(escape).join(";"));
-    }
+  const selectedRecords = records.filter((record) => selectedRecordIds.has(record.id));
+  if (!selectedRecords.length) {
+    formMessage.textContent = "Selecione ao menos um histórico para exportar.";
+    return;
   }
-  const blob = new Blob(["\ufeff", lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `calibracao-balancas-${localDateValue()}.csv`;
-  link.click();
-  URL.revokeObjectURL(link.href);
-  formMessage.textContent = "";
+  const reportWindow = window.open("", "_blank");
+  if (!reportWindow) {
+    formMessage.textContent = "Permita pop-ups para gerar o PDF.";
+    return;
+  }
+
+  const recordSections = selectedRecords.map((record) => {
+    const points = (record.points || []).map((point, index) => {
+      const netWeight = Number(point.actual) - Number(point.tare);
+      const errorPercent = netWeight > 0
+        ? ((netWeight - Number(point.requested)) / netWeight) * 100
+        : null;
+      return `<tr>
+        <td>${index + 1}</td>
+        <td>${escapeHtml(formatNumber(Number(point.tare)))}</td>
+        <td>${escapeHtml(formatNumber(Number(point.requested)))}</td>
+        <td>${escapeHtml(formatNumber(Number(point.actual)))}</td>
+        <td>${escapeHtml(formatNumber(netWeight))}</td>
+        <td>${errorPercent === null ? "N/D" : `${escapeHtml(formatNumber(errorPercent))}%`}</td>
+      </tr>`;
+    }).join("");
+    return `<section class="record">
+      <h2>${escapeHtml(record.material)} — ${escapeHtml(formatDate(record.date))}</h2>
+      <p><strong>Balança:</strong> ${escapeHtml(record.scale)} &nbsp; <strong>Unidade:</strong> ${escapeHtml(record.unit || "kg")}</p>
+      <p><strong>Responsável:</strong> ${escapeHtml(record.operator || "Não informado")}</p>
+      <table>
+        <thead><tr><th>Ponto</th><th>Tara</th><th>Pedido</th><th>Peso real (bruto)</th><th>Peso líquido</th><th>Erro %</th></tr></thead>
+        <tbody>${points}</tbody>
+      </table>
+      ${record.notes ? `<p><strong>Observações:</strong> ${escapeHtml(record.notes)}</p>` : ""}
+    </section>`;
+  }).join("");
+
+  reportWindow.document.open();
+  reportWindow.document.write(`<!doctype html>
+    <html lang="pt-BR">
+    <head>
+      <meta charset="utf-8">
+      <title>Calibração de balanças</title>
+      <style>
+        body { font: 12px Arial, sans-serif; color: #222; margin: 24px; }
+        h1 { font-size: 22px; margin-bottom: 6px; }
+        .formula { margin: 0 0 22px; color: #444; }
+        .record { margin: 0 0 24px; break-inside: avoid; }
+        .record h2 { font-size: 16px; margin: 0 0 8px; }
+        .record p { margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 7px; border: 1px solid #bbb; text-align: left; }
+        th { background: #eee; }
+        @page { margin: 16mm; }
+      </style>
+    </head>
+    <body>
+      <h1>Relatório de calibração de balanças</h1>
+      <p class="formula">Peso líquido = peso real − tara. Erro (%) = ((peso líquido − pedido) / peso líquido) × 100.</p>
+      ${recordSections}
+    </body>
+    </html>`);
+  reportWindow.document.close();
+  window.setTimeout(() => {
+    if (reportWindow.closed) return;
+    reportWindow.focus();
+    reportWindow.print();
+  }, 300);
+  formMessage.textContent = "Na janela de impressão, escolha “Salvar como PDF”.";
 }
 
 document.querySelector("#add-point-button").addEventListener("click", () => {
@@ -331,7 +438,24 @@ form.addEventListener("submit", (event) => {
 );
 
 document.querySelector("#new-record-button").addEventListener("click", resetForm);
-document.querySelector("#export-button").addEventListener("click", exportCsv);
+document.querySelector("#export-button").addEventListener("click", exportPdf);
 document.querySelector("#history-search").addEventListener("input", renderHistory);
+historyList.addEventListener("change", (event) => {
+  const checkbox = event.target.closest("[data-record-select]");
+  if (!checkbox) return;
+  if (checkbox.checked) selectedRecordIds.add(checkbox.dataset.recordId);
+  else selectedRecordIds.delete(checkbox.dataset.recordId);
+  const query = document.querySelector("#history-search").value.trim().toLocaleLowerCase("pt-BR");
+  const visibleRecords = readRecords().filter((record) => `${record.material} ${record.scale} ${record.operator || ""}`.toLocaleLowerCase("pt-BR").includes(query));
+  updateSelectionControls(visibleRecords);
+});
+document.querySelector("#select-visible-records").addEventListener("change", (event) => {
+  const visibleIds = [...historyList.querySelectorAll("[data-record-select]")].map((checkbox) => checkbox.dataset.recordId);
+  for (const id of visibleIds) {
+    if (event.target.checked) selectedRecordIds.add(id);
+    else selectedRecordIds.delete(id);
+  }
+  renderHistory();
+});
 
 resetForm();
